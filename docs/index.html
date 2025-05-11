@@ -7,6 +7,8 @@
   <link rel="stylesheet" media="screen" href="css/style.css">
   <style>
     body {
+      margin: 0;
+      padding: 0;
       overflow: hidden;
       user-select: none;
       -webkit-user-select: none;
@@ -20,22 +22,16 @@
       transform: translate(-50%, -50%);
       z-index: 10;
       text-align: center;
+      pointer-events: none;
     }
     .center-image {
       max-width: 100%;
       height: auto;
-      pointer-events: none;
     }
-    .click-info {
+    #particles-js {
       position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      text-align: center;
-      color: white;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      z-index: 10;
+      width: 100%;
+      height: 100%;
     }
   </style>
 </head>
@@ -54,11 +50,8 @@
   <img src="img/wo_blanco.png" alt="Centered Logo" class="center-image">
 </div>
 
-<!-- click info -->
-<!-- <div class="click-info">Click anywhere to randomize particle patterns</div> -->
-
 <!-- scripts -->
-<script src="../particles.js"></script>
+<script src="../../particles.js"></script>
 <script src="js/app.js"></script>
 
 <!-- stats.js -->
@@ -82,13 +75,13 @@
   };
   requestAnimationFrame(update);
   
-  // Prevent scrolling with touch events
+  // Prevent scrolling
   document.addEventListener('touchmove', function(e) {
     e.preventDefault();
   }, { passive: false });
   
-  // Prevent context menu
-  document.addEventListener('contextmenu', function(e) {
+  // Prevent selection
+  document.addEventListener('selectstart', function(e) {
     e.preventDefault();
   });
 </script>

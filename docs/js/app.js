@@ -11,20 +11,7 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-// Function to get a random number between min and max
-function getRandomNumber(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-// Function to get a random color with 80% opacity
-function getRandomColor() {
-  const colors = ["#00FFFF", "#FF00FF", "#fff900"]; // white, red, blue, yellow
-  const randomColor = colors[Math.floor(Math.random() * colors.length)];
-  return randomColor; // 80% opacity
-}
-
-// Store the base configuration
-const baseConfig = {
+particlesJS('particles-js', {
   "particles": {
     "number": {
       "value": 80,
@@ -131,50 +118,13 @@ const baseConfig = {
       }
     }
   },
-  "retina_detect": true
-};
-
-// Function to get a new random configuration
-function getRandomConfig() {
-  const newConfig = JSON.parse(JSON.stringify(baseConfig)); // Deep clone
-  
-  // Randomize values
-  newConfig.particles.line_linked.distance = getRandomNumber(100, 500);
-  newConfig.particles.move.speed = getRandomNumber(5, 25);
-  const newColor = getRandomColor();
-  newConfig.particles.shape.stroke.color = newColor;
-  newConfig.particles.line_linked.color = newColor;
-  newConfig.particles.color.value = newColor;
-  newConfig.particles.move.attract.rotateX = getRandomNumber(200, 1500);
-  newConfig.particles.move.attract.rotateY = getRandomNumber(200, 3000);
-  
-  return newConfig;
-}
-
-// Initialize particles
-particlesJS('particles-js', baseConfig);
-
-// Add click handler that destroys and recreates particles with new config
-document.addEventListener('DOMContentLoaded', function() {
-  // Initial random values after a short delay
-  setTimeout(function() {
-    particlesJS('particles-js', getRandomConfig());
-    console.log('Initial randomization applied');
-  }, 1000);
-  
-  // Add click handler to canvas
-  document.getElementById('particles-js').addEventListener('click', function() {
-    console.log('Canvas clicked, randomizing...');
-    const newConfig = getRandomConfig();
-    console.log('New config:', JSON.stringify({
-      distance: newConfig.particles.line_linked.distance,
-      speed: newConfig.particles.move.speed,
-      color: newConfig.particles.shape.stroke.color,
-      rotateX: newConfig.particles.move.attract.rotateX,
-      rotateY: newConfig.particles.move.attract.rotateY
-    }));
-    
-    // Destroy and recreate
-    particlesJS('particles-js', newConfig);
-  });
+  "retina_detect": true,
+  // "config_demo": {
+  //   "hide_card": false,
+  //   "background_color": "#b61924",
+  //   "background_image": "",
+  //   "background_position": "50% 50%",
+  //   "background_repeat": "no-repeat",
+  //   "background_size": "cover"
+  // }
 });
