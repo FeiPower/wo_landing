@@ -38,11 +38,11 @@ const baseConfig = {
     "shape": {
       "type": ["circle", "triangle", "polygon", "star"],
       "stroke": {
-        "width": 2,
+        "width": 0,
         "color": "#fff90080"
       },
       "polygon": {
-        "nb_sides": 4
+        "nb_sides": 6
       },
       "image": {
         "src": "img/github.svg",
@@ -54,7 +54,7 @@ const baseConfig = {
       "value": 1,
       "random": false,
       "anim": {
-        "enable": true,
+        "enable": false,
         "speed": 1,
         "opacity_min": 0.1,
         "sync": true
@@ -74,14 +74,14 @@ const baseConfig = {
       "enable": true,
       "distance": 300,
       "color": "#fff900",
-      "opacity": 0.8,
+      "opacity": 0.95,
       "width": 1
     },
     "move": {
       "enable": true,
       "speed": 20,
       "direction": "none",
-      "random": false,
+      "random": true,
       "straight": false,
       "out_mode": "out",
       "attract": {
@@ -138,11 +138,12 @@ function getRandomConfig() {
   const newConfig = JSON.parse(JSON.stringify(baseConfig)); // Deep clone
   
   // Randomize values
-  newConfig.particles.line_linked.distance = getRandomNumber(100, 500);
-  newConfig.particles.move.speed = getRandomNumber(5, 15);
+  newConfig.particles.line_linked.distance = getRandomNumber(50, 500);
+  newConfig.particles.move.speed = getRandomNumber(1, 20);
   const newColor = getRandomColor();
   newConfig.particles.shape.stroke.color = newColor;
   newConfig.particles.line_linked.color = newColor;
+  newConfig.particles.line_linked.width = getRandomNumber(.1, 3);
   newConfig.particles.color.value = newColor;
   newConfig.particles.move.attract.rotateX = getRandomNumber(200, 1500);
   newConfig.particles.move.attract.rotateY = getRandomNumber(1500, 3000);
