@@ -69,7 +69,7 @@ var Stats = function () {
 		switch ( mode ) {
 
 			case 0:
-				fpsDiv.style.display = 'block';
+				fpsDiv.style.display = 'none';
 				msDiv.style.display = 'none';
 				break;
 			case 1:
