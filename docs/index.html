@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" media="screen" href="css/style.css">
   <style>
+    body {
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
     .center-image-container {
       position: absolute;
       top: 50%;
@@ -17,6 +24,18 @@
     .center-image {
       max-width: 100%;
       height: auto;
+      pointer-events: none;
+    }
+    .click-info {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: white;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      z-index: 10;
     }
   </style>
 </head>
@@ -34,6 +53,9 @@
 <div class="center-image-container">
   <img src="img/wo_blanco.png" alt="Centered Logo" class="center-image">
 </div>
+
+<!-- click info -->
+<!-- <div class="click-info">Click anywhere to randomize particle patterns</div> -->
 
 <!-- scripts -->
 <script src="../../particles.js"></script>
@@ -59,6 +81,16 @@
     requestAnimationFrame(update);
   };
   requestAnimationFrame(update);
+  
+  // Prevent scrolling with touch events
+  document.addEventListener('touchmove', function(e) {
+    e.preventDefault();
+  }, { passive: false });
+  
+  // Prevent context menu
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
 </script>
 
 </body>
